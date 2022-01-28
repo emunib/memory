@@ -1,0 +1,17 @@
+body {
+    box-sizing: border-box;
+}
+.grid {
+    width: 48rem;
+    height: 48rem;
+    margin: auto;
+    background-color: azure;
+    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flip-container {
+    width: 25%;
+    height: 25%;
+}
