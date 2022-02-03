@@ -1,17 +1,59 @@
+*,
+html,
 body {
-    box-sizing: border-box;
-}
-.grid {
-    width: 48rem;
-    height: 48rem;
-    margin: auto;
-    background-color: azure;
-    
-    display: flex;
-    flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.flip-container {
-    width: 25%;
-    height: 25%;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  width: 40.75rem;
+  margin: 4rem auto;
 }
+
+.card {
+  perspective: 60rem;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card__flipper {
+  transition: 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transform-style: preserve-3d;
+  transform-origin: 0;
+  position: relative;
+}
+.card__front {
+  z-index: 2;
+  transform: rotate3d(1, 1, 0, 0deg);
+  background-color: lightgreen;
+}
+.card__back {
+  transform: rotate3d(1, 1, 0, 180deg);
+  background-color: lightblue;
+}
+.card.hover .card__flipper {
+  transform: rotate3d(1, 1, 0, 180deg);
+}
+.card__front, .card__back {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+.card, .card__front, .card__back {
+  width: 10rem;
+  height: 10rem;
+}
+.card__flipper, .card__front, .card__back {
+  pointer-events: none;
+}/*# sourceMappingURL=style.css.map */
