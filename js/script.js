@@ -29,15 +29,26 @@ function card(value) {
 }
 
 function reset() {
-  cards.forEach((card) => card.classList.remove("open"));
+  cards.forEach((card) => card.classList.remove("open", "shake"));
+}
+
+function getOpenCards() {
+  return cards.filter((card) => card.classList.contains("open"));
 }
 
 function openCard(card) {
-  const openCards = cards.filter((card) => card.classList.contains("open"));
-  if (openCards.length < 2) {
+  if (getOpenCards().length < 2) {
     clearTimeout(resetTimeoutId);
     resetTimeoutId = setTimeout(reset, 1500);
     card.classList.add("open");
+
+    const openCards = getOpenCards()
+    if (openCards.length === 2) {
+      setTimeout(() => {
+        openCards.forEach(card => card.classList.add('shake'))
+      }, 1000)
+      
+    }
   }
 }
 

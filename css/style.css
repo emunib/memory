@@ -59,4 +59,45 @@ body {
 }
 .card__flipper, .card__front, .card__back {
   pointer-events: none;
+}
+
+.shake {
+  -webkit-animation: shake 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+          animation: shake 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-7px);
+  }
+  80% {
+    transform: translateX(7px);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  60% {
+    transform: translateX(-7px);
+  }
+  80% {
+    transform: translateX(7px);
+  }
 }/*# sourceMappingURL=style.css.map */
