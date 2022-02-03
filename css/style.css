@@ -17,8 +17,11 @@ body {
 .card {
   perspective: 60rem;
 }
-.card:hover {
-  cursor: pointer;
+.card:hover .card__front {
+  background-color: #64e764;
+}
+.card.open {
+  pointer-events: none;
 }
 .card__flipper {
   transition: 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
@@ -35,7 +38,7 @@ body {
   transform: rotate3d(1, 1, 0, 180deg);
   background-color: lightblue;
 }
-.card.hover .card__flipper {
+.card.open .card__flipper {
   transform: rotate3d(1, 1, 0, 180deg);
 }
 .card__front, .card__back {

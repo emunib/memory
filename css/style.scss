@@ -21,8 +21,12 @@ $grid-size: 4 * $card-size + 3 * $gutter;
 .card {
   perspective: 60rem;
 
-  &:hover {
-    cursor: pointer;
+  &:hover &__front {
+    background-color: darken($color: lightgreen, $amount: 10%);
+  }
+
+  &.open {
+    pointer-events: none;
   }
 
   &__flipper {
@@ -43,7 +47,7 @@ $grid-size: 4 * $card-size + 3 * $gutter;
     background-color: lightblue;
   }
 
-  &.hover &__flipper {
+  &.open &__flipper {
     transform: rotate3d(1, 1, 0, 180deg);
   }
 
