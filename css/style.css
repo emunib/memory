@@ -47,7 +47,7 @@ body {
   transition-duration: 0.5s;
 }
 .card__flipper {
-  transition: 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: 0.4s ease-out;
   transform-style: preserve-3d;
   transform-origin: 0;
   position: relative;
@@ -105,17 +105,18 @@ body {
 }
 
 .shake {
-  -webkit-animation: shake 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-          animation: shake 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  -webkit-animation: shake 0.4s 1s ease-in-out both;
+          animation: shake 0.4s 1s ease-in-out both;
 }
 
 .matched .card__back {
-  -webkit-animation: puff-out-center 1s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
-          animation: puff-out-center 1s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+  -webkit-animation: puff-out-center 0.4s 0.4s ease-out both;
+          animation: puff-out-center 0.4s 0.4s ease-out both;
 }
 
 .matched .card__bg {
   opacity: 100%;
+  filter: saturate(0.5);
 }
 
 @-webkit-keyframes shake {

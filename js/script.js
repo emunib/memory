@@ -34,14 +34,20 @@ function card(value) {
 }
 
 function clear() {
-  cards.forEach(card => {if (!card.classList.contains('matched')) card.classList.remove("open", "shake")});
+  cards.forEach((card) => {
+    if (!card.classList.contains("matched"))
+      card.classList.remove("open", "shake");
+  });
 }
 function reset() {
-  cards.forEach(card => card.classList.remove("open", "shake", "matched"));
+  cards.forEach((card) => card.classList.remove("open", "shake", "matched"));
 }
 
 function getOpenCards() {
-  return cards.filter((card) => card.classList.contains("open") && !card.classList.contains("matched"));
+  return cards.filter(
+    (card) =>
+      card.classList.contains("open") && !card.classList.contains("matched")
+  );
 }
 
 function openCard(card) {
@@ -59,15 +65,13 @@ function openCard(card) {
         clearTimeout(resetTimeoutId);
         openCards.forEach((card) => card.classList.add("matched"));
       } else {
-        setTimeout(() => {
-          openCards.forEach((card) => card.classList.add("shake"));
-        }, 1000);
+        openCards.forEach((card) => card.classList.add("shake"));
       }
     }
   }
 }
 
-values = [...values, ...values].sort((a, b) => 0.5 - Math.random()); // duplicate values and roughly shuffle the order
+values = [...values, ...values].sort(() => 0.5 - Math.random()); // duplicate values and roughly shuffle the order
 cards = values.map((val) => card(val));
 grid.append(...cards);
 
