@@ -9,20 +9,20 @@ function card(value) {
   const card = document.createElement("div");
   const bg = document.createElement("div");
   const flipper = document.createElement("div");
-  const front = document.createElement("div");
   const back = document.createElement("div");
+  const front = document.createElement("div");
 
   card.classList.add("card");
   bg.classList.add("card__bg");
   flipper.classList.add("card__flipper");
-  front.classList.add("card__front");
   back.classList.add("card__back");
+  front.classList.add("card__front");
 
   bg.innerText = value;
-  back.innerText = value;
+  front.innerText = value;
   card.setAttribute("data-id", value);
 
-  flipper.append(front, back);
+  flipper.append(back, front);
   card.append(bg);
   card.append(flipper);
 

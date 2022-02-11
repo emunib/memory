@@ -17,7 +17,7 @@ body {
 .card {
   perspective: 60rem;
 }
-.card:hover .card__front {
+.card:hover .card__back {
   background-color: #aadac9;
   border-color: #58b695;
 }
@@ -52,7 +52,7 @@ body {
   transform-origin: 0;
   position: relative;
 }
-.card__front {
+.card__back {
   z-index: 2;
   transform: rotate3d(1, 1, 0, 0deg);
   font-family: "Gill Sans", sans-serif;
@@ -73,7 +73,7 @@ body {
           backface-visibility: hidden;
   color: #3e8e72;
 }
-.card__back {
+.card__front {
   transform: rotate3d(1, 1, 0, 180deg);
   font-family: "Gill Sans", sans-serif;
   font-weight: 500;
@@ -109,14 +109,14 @@ body {
           animation: shake 0.4s 1s ease-in-out both;
 }
 
-.matched .card__back {
-  -webkit-animation: puff-out-center 0.4s 0.4s ease-out both;
-          animation: puff-out-center 0.4s 0.4s ease-out both;
+.matched .card__front {
+  -webkit-animation: puff-out 0.4s 0.4s ease-out both;
+          animation: puff-out 0.4s 0.4s ease-out both;
 }
 
 .matched .card__bg {
   opacity: 100%;
-  filter: saturate(0.5);
+  filter: saturate(0.3);
 }
 
 @-webkit-keyframes shake {
@@ -154,26 +154,26 @@ body {
     transform: translateX(7px);
   }
 }
-@-webkit-keyframes puff-out-center {
+@-webkit-keyframes puff-out {
   0% {
     transform: rotate3d(1, 1, 0, 180deg) scale(1);
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    transform: rotate3d(1, 1, 0, 180deg) scale(1.3);
+    transform: rotate3d(1, 1, 0, 180deg) scale(1.4);
     filter: blur(4px);
     opacity: 0;
   }
 }
-@keyframes puff-out-center {
+@keyframes puff-out {
   0% {
     transform: rotate3d(1, 1, 0, 180deg) scale(1);
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    transform: rotate3d(1, 1, 0, 180deg) scale(1.3);
+    transform: rotate3d(1, 1, 0, 180deg) scale(1.4);
     filter: blur(4px);
     opacity: 0;
   }

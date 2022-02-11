@@ -29,9 +29,9 @@ $card-size: 10rem;
 $gutter: 0.25rem;
 $grid-size: 4 * $card-size + 3 * $gutter;
 
-$front-colour: #b8e0d2;
-$back-colour: #daeaf6;
-$bg-colour: lighten($back-colour, 5%);
+$back-colour: #b8e0d2;
+$front-colour: #daeaf6;
+$bg-colour: lighten($front-colour, 5%);
 
 $rotate-0: rotate3d(1, 1, 0, 0deg);
 $rotate-180: rotate3d(1, 1, 0, 180deg);
@@ -47,9 +47,9 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
 .card {
   perspective: 60rem;
 
-  &:hover &__front {
-    background-color: darken($front-colour, 4%);
-    border-color: darken($front-colour, 27%);
+  &:hover &__back {
+    background-color: darken($back-colour, 4%);
+    border-color: darken($back-colour, 27%);
   }
 
   &.open {
@@ -70,15 +70,15 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
     position: relative;
   }
 
-  &__front {
+  &__back {
     z-index: 2;
     transform: $rotate-0;
-    @include card($front-colour);
+    @include card($back-colour);
   }
 
-  &__back {
+  &__front {
     transform: $rotate-180;
-    @include card($back-colour);
+    @include card($front-colour);
   }
 
   &.open &__flipper {
@@ -103,13 +103,13 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
   animation: shake 0.4s 1s ease-in-out both;
 }
 
-.matched .card__back {
-  animation: puff-out-center 0.4s 0.4s ease-out both;
+.matched .card__front {
+  animation: puff-out 0.4s 0.4s ease-out both;
 }
 
 .matched .card__bg {
   opacity: 100%;
-  filter: saturate(0.5);
+  filter: saturate(0.3);
 }
 
 @keyframes shake {
@@ -131,14 +131,14 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
   }
 }
 
-@keyframes puff-out-center {
+@keyframes puff-out {
   0% {
     transform: $rotate-180 scale(1);
     filter: blur(0px);
     opacity: 1;
   }
   100% {
-    transform: $rotate-180 scale(1.3);
+    transform: $rotate-180 scale(1.4);
     filter: blur(4px);
     opacity: 0;
   }
