@@ -18,25 +18,32 @@ body {
   perspective: 60rem;
 }
 .card:hover .card__front {
-  background-color: #64e764;
+  background-color: #aadac9;
+  border-color: #58b695;
 }
 .card.open {
   pointer-events: none;
 }
 .card__bg {
-  background-color: goldenrod;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  background-color: #eff6fb;
+  border: solid 2px #9cc7e7;
+  border-radius: 0.5rem;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  border: green solid 1px;
-  border-radius: 0.5rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  color: #4a99d3;
   opacity: 0;
-  transition-delay: 0.5s;
+  transition-delay: 0.3s;
   transition-duration: 0.5s;
 }
 .card__flipper {
@@ -48,26 +55,46 @@ body {
 .card__front {
   z-index: 2;
   transform: rotate3d(1, 1, 0, 0deg);
-  background-color: lightgreen;
-}
-.card__back {
-  transform: rotate3d(1, 1, 0, 180deg);
-  background-color: lightblue;
-}
-.card.open .card__flipper {
-  transform: rotate3d(1, 1, 0, 180deg);
-}
-.card__front, .card__back {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  background-color: #b8e0d2;
+  border: solid 2px #71c1a5;
+  border-radius: 0.5rem;
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 50px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  color: #3e8e72;
+}
+.card__back {
+  transform: rotate3d(1, 1, 0, 180deg);
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  background-color: #daeaf6;
+  border: solid 2px #88bbe2;
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  color: #368dce;
+}
+.card.open .card__flipper {
+  transform: rotate3d(1, 1, 0, 180deg);
 }
 .card, .card__front, .card__back {
   width: 10rem;

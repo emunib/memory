@@ -1,3 +1,22 @@
+@mixin card($colour) {
+  font-family:'Gill Sans', sans-serif;
+  font-weight: 500;
+  background-color: $colour;
+  border: solid 2px darken($colour, 20%);
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  backface-visibility: hidden;
+  color: darken($colour, 40%);
+}
+
 *,
 html,
 body {
@@ -9,6 +28,10 @@ body {
 $card-size: 10rem;
 $gutter: 0.25rem;
 $grid-size: 4 * $card-size + 3 * $gutter;
+
+$front-colour: #b8e0d2;
+$back-colour: #daeaf6;
+$bg-colour: lighten($back-colour, 5%);
 
 .grid {
   display: flex;
@@ -22,7 +45,8 @@ $grid-size: 4 * $card-size + 3 * $gutter;
   perspective: 60rem;
 
   &:hover &__front {
-    background-color: darken($color: lightgreen, $amount: 10%);
+    background-color: darken($front-colour, 4%);
+    border-color: darken($front-colour, 27%);
   }
 
   &.open {
@@ -30,19 +54,9 @@ $grid-size: 4 * $card-size + 3 * $gutter;
   }
 
   &__bg {
-    background-color: goldenrod;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: green solid 1px;
-    border-radius: .5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include card($bg-colour);
     opacity: 0;
-    transition-delay: 0.5s;
+    transition-delay: 0.3s;
     transition-duration: 0.5s;
   }
 
@@ -56,30 +70,16 @@ $grid-size: 4 * $card-size + 3 * $gutter;
   &__front {
     z-index: 2;
     transform: rotate3d(1, 1, 0, 0deg);
-    background-color: lightgreen;
+    @include card($front-colour);
   }
 
   &__back {
     transform: rotate3d(1, 1, 0, 180deg);
-    background-color: lightblue;
+    @include card($back-colour);
   }
 
   &.open &__flipper {
     transform: rotate3d(1, 1, 0, 180deg);
-  }
-
-  &__front,
-  &__back {
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 0.5rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
   }
 
   &,
@@ -101,7 +101,7 @@ $grid-size: 4 * $card-size + 3 * $gutter;
 }
 
 .matched .card__back {
-  animation: puff-out-center 1s 0.4s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
+  animation: puff-out-center 1s 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
 }
 
 .matched .card__bg {
