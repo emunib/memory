@@ -12,9 +12,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 50px;
   backface-visibility: hidden;
   color: darken($colour, 40%);
+  font-size: 2.5rem;
 }
 
 *,
@@ -24,10 +24,10 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
-$card-size: 10rem;
+$num-cols: 4;
+$card-size: 6rem;
 $gutter: 0.25rem;
-$grid-size: 4 * $card-size + 3 * $gutter;
+$grid-size: $num-cols * $card-size + ($num-cols - 1) * $gutter;
 
 $back-colour: #b8e0d2;
 $front-colour: #daeaf6;

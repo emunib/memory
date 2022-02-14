@@ -1,9 +1,32 @@
 const grid = document.querySelector(".grid");
 const resetBtn = document.querySelector(".reset-btn");
-let values = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const icons = [
+  "ghost",
+  "ice-cream",
+  "fire-flame-curved",
+  "guitar",
+  "meteor",
+  "bolt-lightning",
+  "sun",
+  "paw",
+  "feather-pointed",
+  "burger",
+  "paper-plane",
+  "futbol",
+  "sailboat",
+  "money-bill-1-wave",
+  "face-smile"
+];
+
 let cards = [];
 
 let resetTimeoutId = "";
+
+function icon(value) {
+  const icon = document.createElement("i");
+  icon.classList.add("fa-solid", `fa-${value}`);
+  return icon;
+}
 
 function card(value) {
   const card = document.createElement("div");
@@ -18,8 +41,8 @@ function card(value) {
   back.classList.add("card__back");
   front.classList.add("card__front");
 
-  bg.innerText = value;
-  front.innerText = value;
+  bg.appendChild(icon(value));
+  front.appendChild(icon(value));
   card.setAttribute("data-id", value);
 
   flipper.append(back, front);
@@ -71,8 +94,19 @@ function openCard(card) {
   }
 }
 
-values = [...values, ...values].sort(() => 0.5 - Math.random()); // duplicate values and roughly shuffle the order
-cards = values.map((val) => card(val));
+const values = shuffleArray(icons).slice(0, 8)
+cards = shuffleArray([...values, ...values]).map((val) => card(val));
 grid.append(...cards);
 
 resetBtn.addEventListener("click", reset);
+
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
+}

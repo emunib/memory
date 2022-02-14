@@ -10,7 +10,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  width: 40.75rem;
+  width: 24.75rem;
   margin: 4rem auto;
 }
 
@@ -38,10 +38,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 50px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   color: #4a99d3;
+  font-size: 2.5rem;
   opacity: 0;
   transition-delay: 0.3s;
   transition-duration: 0.5s;
@@ -68,10 +68,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 50px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   color: #3e8e72;
+  font-size: 2.5rem;
 }
 .card__front {
   transform: rotate3d(1, 1, 0, 180deg);
@@ -88,17 +88,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 50px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   color: #368dce;
+  font-size: 2.5rem;
 }
 .card.open .card__flipper {
   transform: rotate3d(1, 1, 0, 180deg);
 }
 .card, .card__front, .card__back {
-  width: 10rem;
-  height: 10rem;
+  width: 6rem;
+  height: 6rem;
 }
 .card__flipper, .card__front, .card__back {
   pointer-events: none;
