@@ -15,7 +15,7 @@ const icons = [
   "futbol",
   "sailboat",
   "money-bill-1-wave",
-  "face-smile"
+  "face-smile",
 ];
 
 let cards = [];
@@ -63,7 +63,10 @@ function clear() {
   });
 }
 function reset() {
-  cards.forEach((card) => card.classList.remove("open", "shake", "matched"));
+  grid.innerHTML = ''
+  const values = shuffleArray(icons).slice(0, 8);
+  cards = shuffleArray([...values, ...values]).map((val) => card(val));
+  grid.append(...cards);
 }
 
 function getOpenCards() {
@@ -94,12 +97,13 @@ function openCard(card) {
   }
 }
 
-const values = shuffleArray(icons).slice(0, 8)
-cards = shuffleArray([...values, ...values]).map((val) => card(val));
-grid.append(...cards);
+
+reset()
+
+
+
 
 resetBtn.addEventListener("click", reset);
-
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -110,3 +114,12 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+
+const animated = document.querySelector('.timer__fill');
+
+animated.addEventListener('animationend', () => {
+
+  document.querySelector('.timer').classList.remove('start')
+  document.querySelector('.timer').classList.add('fail')
+});

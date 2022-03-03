@@ -1,3 +1,4 @@
+// MIXINS
 @mixin card($colour) {
   font-family: "Gill Sans", sans-serif;
   font-weight: 500;
@@ -17,15 +18,9 @@
   font-size: 2.5rem;
 }
 
-*,
-html,
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// VARIABLES
 $num-cols: 4;
-$card-size: 6rem;
+$card-size: 7rem;
 $gutter: 0.25rem;
 $grid-size: $num-cols * $card-size + ($num-cols - 1) * $gutter;
 
@@ -36,12 +31,43 @@ $bg-colour: lighten($front-colour, 5%);
 $rotate-0: rotate3d(1, 1, 0, 0deg);
 $rotate-180: rotate3d(1, 1, 0, 180deg);
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 4rem;
+  background-color: lightyellow;
+  overflow: scroll;
+}
+
+.timer {
+  width: $grid-size;
+  height: 1rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  background-color: lightgrey;
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+  }
+}
+
+.start .timer__fill {
+  animation: timer-drain 5s linear both;
+}
+.fail .timer__fill {
+  animation: timer-empty 1s linear both;
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
   gap: $gutter;
   width: $grid-size;
-  margin: 4rem auto;
+  margin: 2rem auto;
 }
 
 .card {
@@ -112,6 +138,7 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
   filter: saturate(0.3);
 }
 
+// ANIMATIONS
 @keyframes shake {
   0%,
   100% {
@@ -141,5 +168,38 @@ $rotate-180: rotate3d(1, 1, 0, 180deg);
     transform: $rotate-180 scale(1.4);
     filter: blur(4px);
     opacity: 0;
+  }
+}
+
+@keyframes timer-drain {
+  0% {
+    width: 100%;
+    background-color: #69B34C;
+  }
+  40% {
+    background-color: #ACB334;
+  }
+  75% {
+    background-color: #d8b02c;
+  }
+  90% {
+    background-color: #bb3f3f;
+  }
+  100% {
+    width: 0;
+    background-color: #bb3f3f;
+  }
+}
+
+@keyframes timer-empty {
+  0% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 1;
   }
 }

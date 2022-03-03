@@ -1,17 +1,42 @@
-*,
-html,
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  padding: 4rem;
+  background-color: lightyellow;
+  overflow: scroll;
+}
+
+.timer {
+  width: 28.75rem;
+  height: 1rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+  background-color: lightgrey;
+  overflow: hidden;
+}
+.timer__fill {
+  height: 100%;
+}
+
+.start .timer__fill {
+  -webkit-animation: timer-drain 5s linear both;
+          animation: timer-drain 5s linear both;
+}
+
+.fail .timer__fill {
+  -webkit-animation: timer-empty 1s linear both;
+          animation: timer-empty 1s linear both;
 }
 
 .grid {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  width: 24.75rem;
-  margin: 4rem auto;
+  width: 28.75rem;
+  margin: 2rem auto;
 }
 
 .card {
@@ -97,8 +122,8 @@ body {
   transform: rotate3d(1, 1, 0, 180deg);
 }
 .card, .card__front, .card__back {
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
 }
 .card__flipper, .card__front, .card__back {
   pointer-events: none;
@@ -176,5 +201,67 @@ body {
     transform: rotate3d(1, 1, 0, 180deg) scale(1.4);
     filter: blur(4px);
     opacity: 0;
+  }
+}
+@-webkit-keyframes timer-drain {
+  0% {
+    width: 100%;
+    background-color: #69B34C;
+  }
+  40% {
+    background-color: #ACB334;
+  }
+  75% {
+    background-color: #d8b02c;
+  }
+  90% {
+    background-color: #bb3f3f;
+  }
+  100% {
+    width: 0;
+    background-color: #bb3f3f;
+  }
+}
+@keyframes timer-drain {
+  0% {
+    width: 100%;
+    background-color: #69B34C;
+  }
+  40% {
+    background-color: #ACB334;
+  }
+  75% {
+    background-color: #d8b02c;
+  }
+  90% {
+    background-color: #bb3f3f;
+  }
+  100% {
+    width: 0;
+    background-color: #bb3f3f;
+  }
+}
+@-webkit-keyframes timer-empty {
+  0% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 1;
+  }
+}
+@keyframes timer-empty {
+  0% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #bb3f3f;
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */
