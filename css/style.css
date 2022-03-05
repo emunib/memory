@@ -4,26 +4,32 @@
 
 body {
   margin: 0;
-  padding: 4rem;
+  padding: 0;
   background-color: lightyellow;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Dongle", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 100%;
 }
 
 .timer {
   width: 28.75rem;
   height: 1rem;
-  margin: 2rem auto;
   border-radius: 1rem;
   background-color: lightgrey;
   overflow: hidden;
+  margin-top: 4rem;
 }
 .timer__fill {
   height: 100%;
 }
 
 .start .timer__fill {
-  -webkit-animation: timer-drain 5s linear both;
-          animation: timer-drain 5s linear both;
+  -webkit-animation: timer-drain 60s linear both;
+          animation: timer-drain 60s linear both;
 }
 
 .fail .timer__fill {
@@ -36,25 +42,30 @@ body {
   flex-wrap: wrap;
   gap: 0.25rem;
   width: 28.75rem;
-  margin: 2rem auto;
+  margin: 2rem 0;
 }
 
 .card {
   perspective: 60rem;
 }
+.card:hover {
+  cursor: pointer;
+}
 .card:hover .card__back {
   background-color: #aadac9;
   border-color: #58b695;
+}
+.card:active .card__back {
+  background-color: #95d1bc;
 }
 .card.open {
   pointer-events: none;
 }
 .card__bg {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 500;
   background-color: #eff6fb;
   border: solid 2px #9cc7e7;
   border-radius: 0.5rem;
+  color: #4a99d3;
   position: absolute;
   top: 0;
   left: 0;
@@ -65,7 +76,6 @@ body {
   justify-content: center;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  color: #4a99d3;
   font-size: 2.5rem;
   opacity: 0;
   transition-delay: 0.3s;
@@ -80,11 +90,10 @@ body {
 .card__back {
   z-index: 2;
   transform: rotate3d(1, 1, 0, 0deg);
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 500;
   background-color: #b8e0d2;
   border: solid 2px #71c1a5;
   border-radius: 0.5rem;
+  color: #3e8e72;
   position: absolute;
   top: 0;
   left: 0;
@@ -95,16 +104,14 @@ body {
   justify-content: center;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  color: #3e8e72;
   font-size: 2.5rem;
 }
 .card__front {
   transform: rotate3d(1, 1, 0, 180deg);
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 500;
   background-color: #daeaf6;
   border: solid 2px #88bbe2;
   border-radius: 0.5rem;
+  color: #368dce;
   position: absolute;
   top: 0;
   left: 0;
@@ -115,7 +122,6 @@ body {
   justify-content: center;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  color: #368dce;
   font-size: 2.5rem;
 }
 .card.open .card__flipper {
@@ -127,6 +133,26 @@ body {
 }
 .card__flipper, .card__front, .card__back {
   pointer-events: none;
+}
+
+.reset-btn {
+  background-color: #ffa281;
+  border: solid 2px #ff571b;
+  border-radius: 0.5rem;
+  color: #b42f00;
+  font: inherit;
+}
+.reset-btn:hover {
+  background-color: #ff936d;
+  border-color: #f64100;
+  cursor: pointer;
+}
+.reset-btn:active {
+  background-color: #ff7c4e;
+}
+.reset-btn__text {
+  text-transform: uppercase;
+  margin-top: 0.15em;
 }
 
 .shake {
@@ -206,10 +232,10 @@ body {
 @-webkit-keyframes timer-drain {
   0% {
     width: 100%;
-    background-color: #69B34C;
+    background-color: #69b34c;
   }
   40% {
-    background-color: #ACB334;
+    background-color: #acb334;
   }
   75% {
     background-color: #d8b02c;
@@ -225,10 +251,10 @@ body {
 @keyframes timer-drain {
   0% {
     width: 100%;
-    background-color: #69B34C;
+    background-color: #69b34c;
   }
   40% {
-    background-color: #ACB334;
+    background-color: #acb334;
   }
   75% {
     background-color: #d8b02c;
