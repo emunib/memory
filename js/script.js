@@ -1,5 +1,7 @@
 const grid = document.querySelector(".grid");
 const resetBtn = document.querySelector(".reset-btn");
+const timer = document.querySelector(".timer");
+
 const icons = [
   "ghost",
   "ice-cream",
@@ -17,7 +19,18 @@ const icons = [
   "money-bill-1-wave",
   "face-smile",
 ];
+const n = 4;
+const diagonals = [];
+for (let i = 0; i < 2 * n - 1; i++) {
+  const arr = [];
+  let j = i < n ? i + 1 : (2 * n - 1) % i;
+  let k = i < n ? i * n : ((i + 1) % n) + n * n - n;
 
+  for (let l = 0; l < j; l++) {
+    arr.push(k - l * (n - 1));
+  }
+  diagonals.push(arr);
+}
 let cards = [];
 
 let resetTimeoutId = "";
@@ -63,10 +76,25 @@ function clear() {
   });
 }
 function reset() {
-  grid.innerHTML = ''
-  const values = shuffleArray(icons).slice(0, 8);
-  cards = shuffleArray([...values, ...values]).map((val) => card(val));
-  grid.append(...cards);
+  const delay = 120;
+  grid.classList.add("reset");
+  diagonals.forEach((d, i) => {
+    d.forEach((j) => {
+      setTimeout(() => {
+        cards[j].classList.remove("open");
+      }, i * delay);
+    });
+  });
+  timer.classList.remove("fail");
+
+  setTimeout(() => {
+    grid.innerHTML = "";
+    const values = shuffleArray(icons).slice(0, 2 * n);
+    cards = shuffleArray([...values, ...values]).map((val) => card(val));
+    grid.append(...cards);
+    timer.classList.add("start");
+    grid.classList.remove("reset");
+  }, n * 2 * delay);
 }
 
 function getOpenCards() {
@@ -97,13 +125,21 @@ function openCard(card) {
   }
 }
 
+// reset();
+grid.innerHTML = "";
+const values = shuffleArray(icons).slice(0, 2 * n);
+cards = shuffleArray([...values, ...values]).map((val) => card(val));
+grid.append(...cards);
+timer.classList.remove("fail");
+timer.classList.add("start");
 
-reset()
-
-
-
-
-resetBtn.addEventListener("click", reset);
+resetBtn.addEventListener("click", () => {
+  if (!resetBtn.classList.contains("hidden")) {
+    reset();
+    resetBtn.classList.remove("visible");
+    resetBtn.classList.add("hidden");
+  }
+});
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -115,11 +151,15 @@ function shuffleArray(array) {
   return array;
 }
 
-
-const animated = document.querySelector('.timer__fill');
-
-animated.addEventListener('animationend', () => {
-
-  document.querySelector('.timer').classList.remove('start')
-  document.querySelector('.timer').classList.add('fail')
+timer.addEventListener("animationend", () => {
+  if (timer.classList.contains("start")) {
+    console.log("don3e");
+    clearTimeout(resetTimeoutId);
+    timer.classList.remove("start");
+    timer.classList.add("fail");
+    cards.forEach((card) => card.classList.add("open", "fail"));
+  } else {
+    resetBtn.classList.remove("hidden");
+    resetBtn.classList.add("visible");
+  }
 });

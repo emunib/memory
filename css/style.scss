@@ -36,8 +36,8 @@ $front-colour: #daeaf6;
 $bg-colour: lighten($front-colour, 5%);
 $btn-colour: #ffa281;
 
-$rotate-0: rotate3d(1, 1, 0, 0deg);
-$rotate-180: rotate3d(1, 1, 0, 180deg);
+$rotate-0: rotate3d(-1, 1, 0, 0deg);
+$rotate-180: rotate3d(-1, 1, 0, -180deg);
 
 * {
   box-sizing: border-box;
@@ -70,7 +70,7 @@ body {
 }
 
 .start .timer__fill {
-  animation: timer-drain 60s linear both;
+  animation: timer-drain 6s linear both;
 }
 .fail .timer__fill {
   animation: timer-empty 1s linear both;
@@ -82,6 +82,10 @@ body {
   gap: $gutter;
   width: $grid-size;
   margin: 2rem 0;
+
+  &.reset {
+    pointer-events: none;
+  }
 }
 
 .card {
@@ -113,7 +117,7 @@ body {
   &__flipper {
     transition: 0.4s ease-out;
     transform-style: preserve-3d;
-    transform-origin: 0;
+    transform-origin: 100%;
     position: relative;
   }
 
@@ -149,6 +153,7 @@ body {
 .reset-btn {
   @include card-style($btn-colour);
   font: inherit;
+  opacity: 0;
 
   &:hover {
     @include darken-style($btn-colour);
@@ -163,6 +168,14 @@ body {
     text-transform: uppercase;
     margin-top: 0.15em;
   }
+
+  &.visible {
+    animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  }
+  &.hidden {
+    pointer-events: none;
+    animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.030, 0.685, 0.220) both;
+  }
 }
 
 .shake {
@@ -171,6 +184,10 @@ body {
 
 .matched .card__front {
   animation: puff-out 0.4s 0.4s ease-out both;
+}
+
+.fail .card__front {
+  animation: card-fail 0.5s 0.3s ease-out both;
 }
 
 .matched .card__bg {
@@ -241,5 +258,66 @@ body {
     width: 100%;
     background-color: #bb3f3f;
     opacity: 1;
+  }
+}
+
+@keyframes card-fail {
+  0% {
+    @include card-style($front-colour);
+  }
+
+  100% {
+    @include card-style(#f57c7c);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scaleX(0) scaleY(0);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  19% {
+    transform: scaleX(.5) scaleY(1);
+  }
+  38% {
+    transform: scaleX(1) scaleY(1);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+  55% {
+    transform: scaleX(0.7);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: scaleX(1);
+    animation-timing-function: ease-out;
+  }
+  81% {
+    transform: scaleX(0.84);
+    animation-timing-function: ease-in;
+  }
+  89% {
+    transform: scaleX(1);
+    animation-timing-function: ease-out;
+  }
+  95% {
+    transform: scaleX(0.95);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: scaleX(1);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+@keyframes slide-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
   }
 }
