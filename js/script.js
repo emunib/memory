@@ -63,6 +63,7 @@ function card(value) {
   card.append(flipper);
 
   card.addEventListener("click", () => {
+    timer.classList.remove("paused");
     openCard(card);
   });
 
@@ -86,13 +87,15 @@ function reset() {
     });
   });
   timer.classList.remove("fail");
+  timer.classList.add("reset");
 
   setTimeout(() => {
     grid.innerHTML = "";
     const values = shuffleArray(icons).slice(0, 2 * n);
     cards = shuffleArray([...values, ...values]).map((val) => card(val));
     grid.append(...cards);
-    timer.classList.add("start");
+    timer.classList.add("start", "paused");
+    timer.classList.remove("reset");
     grid.classList.remove("reset");
   }, n * 2 * delay);
 }
@@ -130,8 +133,6 @@ grid.innerHTML = "";
 const values = shuffleArray(icons).slice(0, 2 * n);
 cards = shuffleArray([...values, ...values]).map((val) => card(val));
 grid.append(...cards);
-timer.classList.remove("fail");
-timer.classList.add("start");
 
 resetBtn.addEventListener("click", () => {
   if (!resetBtn.classList.contains("hidden")) {

@@ -34,7 +34,7 @@ $grid-size: $num-cols * $card-size + ($num-cols - 1) * $gutter;
 $back-colour: #b8e0d2;
 $front-colour: #daeaf6;
 $bg-colour: lighten($front-colour, 5%);
-$btn-colour: #ffa281;
+$btn-colour: #ffdb81;
 
 $rotate-0: rotate3d(-1, 1, 0, 0deg);
 $rotate-180: rotate3d(-1, 1, 0, -180deg);
@@ -70,10 +70,19 @@ body {
 }
 
 .start .timer__fill {
-  animation: timer-drain 6s linear both;
+  animation: timer-drain 40s linear both;
 }
+
 .fail .timer__fill {
   animation: timer-empty 1s linear both;
+}
+
+.reset .timer__fill {
+  animation: timer-reset 1s linear both;
+}
+
+.paused .timer__fill {
+  animation-play-state: paused;
 }
 
 .grid {
@@ -174,7 +183,7 @@ body {
   }
   &.hidden {
     pointer-events: none;
-    animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.030, 0.685, 0.220) both;
+    animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
   }
 }
 
@@ -260,6 +269,18 @@ body {
     opacity: 1;
   }
 }
+@keyframes timer-reset {
+  0% {
+    width: 100%;
+    background-color: #69b34c;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #69b34c;
+    opacity: 1;
+  }
+}
 
 @keyframes card-fail {
   0% {
@@ -278,7 +299,7 @@ body {
     opacity: 0;
   }
   19% {
-    transform: scaleX(.5) scaleY(1);
+    transform: scaleX(0.5) scaleY(1);
   }
   38% {
     transform: scaleX(1) scaleY(1);
@@ -311,6 +332,7 @@ body {
     opacity: 1;
   }
 }
+
 @keyframes slide-out {
   0% {
     opacity: 1;

@@ -28,13 +28,23 @@ body {
 }
 
 .start .timer__fill {
-  -webkit-animation: timer-drain 6s linear both;
-          animation: timer-drain 6s linear both;
+  -webkit-animation: timer-drain 40s linear both;
+          animation: timer-drain 40s linear both;
 }
 
 .fail .timer__fill {
   -webkit-animation: timer-empty 1s linear both;
           animation: timer-empty 1s linear both;
+}
+
+.reset .timer__fill {
+  -webkit-animation: timer-reset 1s linear both;
+          animation: timer-reset 1s linear both;
+}
+
+.paused .timer__fill {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
 }
 
 .grid {
@@ -139,20 +149,20 @@ body {
 }
 
 .reset-btn {
-  background-color: #ffa281;
-  border: solid 2px #ff571b;
+  background-color: #ffdb81;
+  border: solid 2px #ffbe1b;
   border-radius: 0.5rem;
-  color: #b42f00;
+  color: #b48100;
   font: inherit;
   opacity: 0;
 }
 .reset-btn:hover {
-  background-color: #ff936d;
-  border-color: #f64100;
+  background-color: #ffd56d;
+  border-color: #f6b000;
   cursor: pointer;
 }
 .reset-btn:active {
-  background-color: #ff7c4e;
+  background-color: #ffcc4e;
 }
 .reset-btn__text {
   text-transform: uppercase;
@@ -306,6 +316,30 @@ body {
   100% {
     width: 100%;
     background-color: #bb3f3f;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes timer-reset {
+  0% {
+    width: 100%;
+    background-color: #69b34c;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #69b34c;
+    opacity: 1;
+  }
+}
+@keyframes timer-reset {
+  0% {
+    width: 100%;
+    background-color: #69b34c;
+    opacity: 0;
+  }
+  100% {
+    width: 100%;
+    background-color: #69b34c;
     opacity: 1;
   }
 }
