@@ -154,11 +154,13 @@ function shuffleArray(array) {
 
 timer.addEventListener("animationend", () => {
   if (timer.classList.contains("start")) {
-    console.log("don3e");
     clearTimeout(resetTimeoutId);
     timer.classList.remove("start");
     timer.classList.add("fail");
-    cards.forEach((card) => card.classList.add("open", "fail"));
+    cards.forEach((card) => {
+      card.classList.add("open", "fail");
+      card.classList.remove("matched");
+    });
   } else {
     resetBtn.classList.remove("hidden");
     resetBtn.classList.add("visible");

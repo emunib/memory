@@ -56,13 +56,17 @@ body {
   line-height: 100%;
 }
 
+h1 {
+  margin: 4rem 0 2rem;
+  color: #ffc01f;
+}
+
 .timer {
   width: $grid-size;
   height: 1rem;
   border-radius: 1rem;
   background-color: lightgrey;
   overflow: hidden;
-  margin-top: 4rem;
 
   &__fill {
     height: 100%;

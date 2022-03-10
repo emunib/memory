@@ -15,13 +15,17 @@ body {
   line-height: 100%;
 }
 
+h1 {
+  margin: 4rem 0 2rem;
+  color: #ffc01f;
+}
+
 .timer {
   width: 28.75rem;
   height: 1rem;
   border-radius: 1rem;
   background-color: lightgrey;
   overflow: hidden;
-  margin-top: 4rem;
 }
 .timer__fill {
   height: 100%;
