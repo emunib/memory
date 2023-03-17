@@ -32,23 +32,19 @@ h1 {
 }
 
 .start .timer__fill {
-  -webkit-animation: timer-drain 40s linear both;
-          animation: timer-drain 40s linear both;
+  animation: timer-drain 40s linear both;
 }
 
 .fail .timer__fill {
-  -webkit-animation: timer-empty 1s linear both;
-          animation: timer-empty 1s linear both;
+  animation: timer-empty 1s linear both;
 }
 
 .reset .timer__fill {
-  -webkit-animation: timer-reset 1s linear both;
-          animation: timer-reset 1s linear both;
+  animation: timer-reset 1s linear both;
 }
 
 .paused .timer__fill {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .grid {
@@ -64,8 +60,6 @@ h1 {
 
 .card {
   perspective: 60rem;
-}
-.card:hover {
   cursor: pointer;
 }
 .card:hover .card__back {
@@ -91,8 +85,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   font-size: 2.5rem;
   opacity: 0;
   transition-delay: 0.3s;
@@ -119,8 +112,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   font-size: 2.5rem;
 }
 .card__front {
@@ -137,8 +129,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   font-size: 2.5rem;
 }
 .card.open .card__flipper {
@@ -173,51 +164,28 @@ h1 {
   margin-top: 0.15em;
 }
 .reset-btn.visible {
-  -webkit-animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-          animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 }
 .reset-btn.hidden {
   pointer-events: none;
-  -webkit-animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
-          animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
+  animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
 }
 
 .shake {
-  -webkit-animation: shake 0.4s 1s ease-in-out both;
-          animation: shake 0.4s 1s ease-in-out both;
+  animation: shake 0.4s 1s ease-in-out both;
 }
 
 .matched .card__front {
-  -webkit-animation: puff-out 0.4s 0.4s ease-out both;
-          animation: puff-out 0.4s 0.4s ease-out both;
+  animation: puff-out 0.4s 0.4s ease-out both;
 }
 
 .fail .card__front {
-  -webkit-animation: card-fail 0.5s 0.3s ease-out both;
-          animation: card-fail 0.5s 0.3s ease-out both;
+  animation: card-fail 0.5s 0.3s ease-out both;
 }
 
 .matched .card__bg {
   opacity: 100%;
   filter: saturate(0.3);
-}
-
-@-webkit-keyframes shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-10px);
-  }
-  40% {
-    transform: translateX(10px);
-  }
-  60% {
-    transform: translateX(-7px);
-  }
-  80% {
-    transform: translateX(7px);
-  }
 }
 
 @keyframes shake {
@@ -237,18 +205,6 @@ h1 {
     transform: translateX(7px);
   }
 }
-@-webkit-keyframes puff-out {
-  0% {
-    transform: rotate3d(-1, 1, 0, -180deg) scale(1);
-    filter: blur(0px);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate3d(-1, 1, 0, -180deg) scale(1.4);
-    filter: blur(4px);
-    opacity: 0;
-  }
-}
 @keyframes puff-out {
   0% {
     transform: rotate3d(-1, 1, 0, -180deg) scale(1);
@@ -259,25 +215,6 @@ h1 {
     transform: rotate3d(-1, 1, 0, -180deg) scale(1.4);
     filter: blur(4px);
     opacity: 0;
-  }
-}
-@-webkit-keyframes timer-drain {
-  0% {
-    width: 100%;
-    background-color: #69b34c;
-  }
-  40% {
-    background-color: #acb334;
-  }
-  75% {
-    background-color: #d8b02c;
-  }
-  90% {
-    background-color: #bb3f3f;
-  }
-  100% {
-    width: 0;
-    background-color: #bb3f3f;
   }
 }
 @keyframes timer-drain {
@@ -299,18 +236,6 @@ h1 {
     background-color: #bb3f3f;
   }
 }
-@-webkit-keyframes timer-empty {
-  0% {
-    width: 100%;
-    background-color: #bb3f3f;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    background-color: #bb3f3f;
-    opacity: 1;
-  }
-}
 @keyframes timer-empty {
   0% {
     width: 100%;
@@ -320,18 +245,6 @@ h1 {
   100% {
     width: 100%;
     background-color: #bb3f3f;
-    opacity: 1;
-  }
-}
-@-webkit-keyframes timer-reset {
-  0% {
-    width: 100%;
-    background-color: #69b34c;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    background-color: #69b34c;
     opacity: 1;
   }
 }
@@ -345,20 +258,6 @@ h1 {
     width: 100%;
     background-color: #69b34c;
     opacity: 1;
-  }
-}
-@-webkit-keyframes card-fail {
-  0% {
-    background-color: #daeaf6;
-    border: solid 2px #88bbe2;
-    border-radius: 0.5rem;
-    color: #368dce;
-  }
-  100% {
-    background-color: #f57c7c;
-    border: solid 2px #ee1d1d;
-    border-radius: 0.5rem;
-    color: #990c0c;
   }
 }
 @keyframes card-fail {
@@ -375,59 +274,10 @@ h1 {
     color: #990c0c;
   }
 }
-@-webkit-keyframes bounce-in {
-  0% {
-    transform: scaleX(0) scaleY(0);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-    opacity: 0;
-  }
-  19% {
-    transform: scaleX(0.5) scaleY(1);
-  }
-  38% {
-    transform: scaleX(1) scaleY(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    opacity: 1;
-  }
-  55% {
-    transform: scaleX(0.7);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  72% {
-    transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  81% {
-    transform: scaleX(0.84);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  89% {
-    transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-  }
-  95% {
-    transform: scaleX(0.95);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
-  }
-  100% {
-    transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
-    opacity: 1;
-  }
-}
 @keyframes bounce-in {
   0% {
     transform: scaleX(0) scaleY(0);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
     opacity: 0;
   }
   19% {
@@ -435,50 +285,33 @@ h1 {
   }
   38% {
     transform: scaleX(1) scaleY(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
     opacity: 1;
   }
   55% {
     transform: scaleX(0.7);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   72% {
     transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   81% {
     transform: scaleX(0.84);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   89% {
     transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
   }
   95% {
     transform: scaleX(0.95);
-    -webkit-animation-timing-function: ease-in;
-            animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
   }
   100% {
     transform: scaleX(1);
-    -webkit-animation-timing-function: ease-out;
-            animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
     opacity: 1;
-  }
-}
-@-webkit-keyframes slide-out {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-    opacity: 0;
   }
 }
 @keyframes slide-out {
@@ -490,4 +323,6 @@ h1 {
     transform: scale(0);
     opacity: 0;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

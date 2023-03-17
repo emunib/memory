@@ -99,14 +99,12 @@ h1 {
   &.reset {
     pointer-events: none;
   }
+
 }
 
 .card {
   perspective: 60rem;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   &:hover &__back {
     @include darken-style($back-colour);
