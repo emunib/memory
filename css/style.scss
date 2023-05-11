@@ -39,6 +39,8 @@ $btn-colour: #ffdb81;
 $rotate-0: rotate3d(-1, 1, 0, 0deg);
 $rotate-180: rotate3d(-1, 1, 0, -180deg);
 
+
+// GENERAL
 * {
   box-sizing: border-box;
 }
@@ -61,6 +63,8 @@ h1 {
   color: #ffc01f;
 }
 
+
+// TIMER
 .timer {
   width: $grid-size;
   height: 1rem;
@@ -74,7 +78,7 @@ h1 {
 }
 
 .start .timer__fill {
-  animation: timer-drain 40s linear both;
+  animation: timer-drain 60s linear both;
 }
 
 .fail .timer__fill {
@@ -89,6 +93,8 @@ h1 {
   animation-play-state: paused;
 }
 
+
+// CARDS
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -105,6 +111,7 @@ h1 {
 .card {
   perspective: 60rem;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover &__back {
     @include darken-style($back-colour);
@@ -161,6 +168,8 @@ h1 {
   }
 }
 
+
+// RESET BUTTON
 .reset-btn {
   @include card-style($btn-colour);
   font: inherit;
@@ -181,14 +190,17 @@ h1 {
   }
 
   &.visible {
-    animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+    animation: bounce-in 0.5s 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
   }
+
   &.hidden {
     pointer-events: none;
     animation: slide-out 0.5s 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22) both;
   }
 }
 
+
+// ANIMATION CLASSES
 .shake {
   animation: shake 0.4s 1s ease-in-out both;
 }
@@ -200,6 +212,36 @@ h1 {
 .fail .card__front {
   animation: card-fail 0.5s 0.3s ease-out both;
 }
+
+.win .card__bg {
+  animation: card-win 0.4s 1s ease-out both;
+}
+
+.shine .card__bg {
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(
+                    120deg,
+                    rgba(255, 255, 255, 0) 30%,
+                    rgba(255, 255, 255, .8),
+                    rgba(255, 255, 255, 0) 70%
+    );
+    opacity: 0.25;
+    top: 0;
+    left: -100px;
+  }
+
+}
+
+@for $i from 1 through 16 {
+  :nth-child(#{$i}).shine .card__bg:before {
+    animation: shine .5s #{1.5 + random(3)/10}s cubic-bezier(.9, .03, .69, .22);
+  }
+}
+
 
 .matched .card__bg {
   opacity: 100%;
@@ -271,6 +313,7 @@ h1 {
     opacity: 1;
   }
 }
+
 @keyframes timer-reset {
   0% {
     width: 100%;
@@ -291,6 +334,17 @@ h1 {
 
   100% {
     @include card-style(#f57c7c);
+  }
+}
+
+@keyframes card-win {
+  0% {
+    @include card-style(#eff6fb);
+  }
+
+  100% {
+    @include card-style(#ffdb81);
+    filter: saturate(1);
   }
 }
 
@@ -343,5 +397,14 @@ h1 {
   100% {
     transform: scale(0);
     opacity: 0;
+  }
+}
+
+@keyframes shine {
+  0% {
+    left: -100px
+  }
+  100% {
+    left: 100%
   }
 }

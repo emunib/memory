@@ -32,7 +32,7 @@ h1 {
 }
 
 .start .timer__fill {
-  animation: timer-drain 40s linear both;
+  animation: timer-drain 60s linear both;
 }
 
 .fail .timer__fill {
@@ -61,6 +61,7 @@ h1 {
 .card {
   perspective: 60rem;
   cursor: pointer;
+  overflow: hidden;
 }
 .card:hover .card__back {
   background-color: #aadac9;
@@ -164,7 +165,7 @@ h1 {
   margin-top: 0.15em;
 }
 .reset-btn.visible {
-  animation: bounce-in 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+  animation: bounce-in 0.5s 1.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 }
 .reset-btn.hidden {
   pointer-events: none;
@@ -181,6 +182,85 @@ h1 {
 
 .fail .card__front {
   animation: card-fail 0.5s 0.3s ease-out both;
+}
+
+.win .card__bg {
+  animation: card-win 0.4s 1s ease-out both;
+}
+
+.shine .card__bg:before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0) 70%);
+  opacity: 0.25;
+  top: 0;
+  left: -100px;
+}
+
+:nth-child(1).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(2).shine .card__bg:before {
+  animation: shine 0.5s 1.6s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(3).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(4).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(5).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(6).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(7).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(8).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(9).shine .card__bg:before {
+  animation: shine 0.5s 1.7s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(10).shine .card__bg:before {
+  animation: shine 0.5s 1.6s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(11).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(12).shine .card__bg:before {
+  animation: shine 0.5s 1.6s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(13).shine .card__bg:before {
+  animation: shine 0.5s 1.6s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(14).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(15).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
+}
+
+:nth-child(16).shine .card__bg:before {
+  animation: shine 0.5s 1.8s cubic-bezier(0.9, 0.03, 0.69, 0.22);
 }
 
 .matched .card__bg {
@@ -274,6 +354,21 @@ h1 {
     color: #990c0c;
   }
 }
+@keyframes card-win {
+  0% {
+    background-color: #eff6fb;
+    border: solid 2px #9dc8e7;
+    border-radius: 0.5rem;
+    color: #4c9ad2;
+  }
+  100% {
+    background-color: #ffdb81;
+    border: solid 2px #ffbe1b;
+    border-radius: 0.5rem;
+    color: #b48100;
+    filter: saturate(1);
+  }
+}
 @keyframes bounce-in {
   0% {
     transform: scaleX(0) scaleY(0);
@@ -322,6 +417,14 @@ h1 {
   100% {
     transform: scale(0);
     opacity: 0;
+  }
+}
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+  100% {
+    left: 100%;
   }
 }
 
